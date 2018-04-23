@@ -3,12 +3,26 @@
  */
 $(document).ready(function() {
 	$('#kaerimasu').click(function() {
-		$('#req_status').val('kaerimasu');
-		document.form.submit();
+		$.ajax({
+			type : 'PATCH',
+			url : '/user/1',
+			data : {status:1},
+			success : function() {
+			},
+			dataType : 'json'
+		});
+		//document.form.submit();
 	});
 	$('#kaerimasita').click(function() {
-		$('#req_status').val('kaerimasita');
-		document.form.submit();
+		$.ajax({
+			type : 'PATCH',
+			url : '/user/1',
+			data : {status:0},
+			success : function() {
+			},
+			dataType : 'json'
+		});
+		//document.form.submit();
 	});
 });
 
@@ -57,8 +71,8 @@ function initMap() {
 													}
 													console.log(response);
 													$.ajax({
-														type : 'POST',
-														url : '/',
+														type : 'PATCH',
+														url : '/user/1',
 														data : data,
 														success : function() {
 														},
